@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_Minimal|x64">
+      <Configuration>Debug_Minimal</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Minimal|x64">
+      <Configuration>Release_Minimal</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A1E4F5C2-3B7D-4E9A-9C1F-2D6B8A0E4F71}</ProjectGuid>
+    <TemplateGuid>{1bc93793-694f-48fe-9372-81e2b05556fd}</TemplateGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration>Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">Win32</Platform>
+    <RootNamespace>mvmhv</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <ProjectName>mvm-hv</ProjectName>
+    
+    <LegacyTargetVersion>false</LegacyTargetVersion>
+    <TrackFileAccess>false</TrackFileAccess>
+    <MinimalRebuildFromTracking>false</MinimalRebuildFromTracking>
+    
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &gt; '17.0'">17.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Minimal|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Minimal|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)include\svm;$(ProjectDir)include\asm;$(SolutionDir)bootloader\include;$(VC_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km;C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km\crt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64</LibraryPath>
+    <OutDir>$(SolutionDir)bin\$(PlatformShortName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\obj\$(PlatformShortName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Minimal|x64'">
+    <OutDir>$(SolutionDir)bin\$(PlatformShortName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\obj\$(PlatformShortName)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(PlatformShortName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\obj\$(PlatformShortName)\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Minimal|x64'">
+    <OutDir>$(SolutionDir)bin\$(PlatformShortName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\obj\$(PlatformShortName)\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ShowIncludes>true</ShowIncludes>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <DisableSpecificWarnings>4201;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_KERNEL_MODE;_WIN64;_AMD64_;AMD64;NTDDI_VERSION=0x0A000000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies);$(KernelBufferOverflowLib);$(DDK_LIB_PATH)ntoskrnl.lib;$(DDK_LIB_PATH)hal.lib;$(DDK_LIB_PATH)wmilib.lib</AdditionalDependencies>
+      <SubSystem>Native</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <TreatLinkerWarningAsErrors>false</TreatLinkerWarningAsErrors>
+      <CETCompat>false</CETCompat>
+      <AdditionalOptions>/GUARD:NO /IGNORE:4210 /IGNORE:4235 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Minimal|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ShowIncludes>true</ShowIncludes>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <DisableSpecificWarnings>4201;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_MINIMAL;_KERNEL_MODE;_WIN64;_AMD64_;AMD64;NTDDI_VERSION=0x0A000000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies);$(KernelBufferOverflowLib);$(DDK_LIB_PATH)ntoskrnl.lib;$(DDK_LIB_PATH)hal.lib;$(DDK_LIB_PATH)wmilib.lib</AdditionalDependencies>
+      <SubSystem>Native</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <TreatLinkerWarningAsErrors>false</TreatLinkerWarningAsErrors>
+      <CETCompat>false</CETCompat>
+      <AdditionalOptions>/GUARD:NO /IGNORE:4210 /IGNORE:4235 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <ShowIncludes>true</ShowIncludes>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PreprocessorDefinitions>_KERNEL_MODE;_WIN64;_AMD64_;AMD64;NTDDI_VERSION=0x0A000000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies);$(KernelBufferOverflowLib);$(DDK_LIB_PATH)ntoskrnl.lib;$(DDK_LIB_PATH)hal.lib;$(DDK_LIB_PATH)wmilib.lib</AdditionalDependencies>
+      <SubSystem>Native</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <TreatLinkerWarningAsErrors>false</TreatLinkerWarningAsErrors>
+      <CETCompat>false</CETCompat>
+      <AdditionalOptions>/GUARD:NO /IGNORE:4210 /IGNORE:4235 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Minimal|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <ShowIncludes>true</ShowIncludes>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PreprocessorDefinitions>_MINIMAL;_KERNEL_MODE;_WIN64;_AMD64_;AMD64;NTDDI_VERSION=0x0A000000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies);$(KernelBufferOverflowLib);$(DDK_LIB_PATH)ntoskrnl.lib;$(DDK_LIB_PATH)hal.lib;$(DDK_LIB_PATH)wmilib.lib</AdditionalDependencies>
+      <SubSystem>Native</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <TreatLinkerWarningAsErrors>false</TreatLinkerWarningAsErrors>
+      <CETCompat>false</CETCompat>
+      <AdditionalOptions>/GUARD:NO /IGNORE:4210 /IGNORE:4235 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>mvm-hv</TargetName>
+    <TargetExt>.pe</TargetExt>
+    <EntryPointSymbol>hvruntime_boot_entry</EntryPointSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Minimal|x64'">
+    <TargetName>mvm-hv</TargetName>
+    <TargetExt>.pe</TargetExt>
+    <EntryPointSymbol>hvruntime_boot_entry</EntryPointSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>mvm-hv</TargetName>
+    <TargetExt>.pe</TargetExt>
+    <EntryPointSymbol>hvruntime_boot_entry</EntryPointSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Minimal|x64'">
+    <TargetName>mvm-hv</TargetName>
+    <TargetExt>.pe</TargetExt>
+    <EntryPointSymbol>hvruntime_boot_entry</EntryPointSymbol>
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <SpectreMitigation>Spectre</SpectreMitigation>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src/utils/spinlock.cpp" />
+    <ClCompile Include="src/utils/log.cpp" />
+    <ClCompile Include="src/utils/hv_platform.cpp" />
+    <ClCompile Include="src/utils/platform_uefi_stubs.cpp" />
+    <ClCompile Include="src/utils/vmexit_log.cpp" />
+    <ClCompile Include="..\bootloader\net\udp_frame.c" />
+    <ClCompile Include="..\bootloader\net\netlog_cfg.c" />
+    <ClCompile Include="..\bootloader\net\hv_features_cfg.c" />
+    <ClCompile Include="..\bootloader\net\snp_send.c" />
+    <ClCompile Include="src/memory/hvmem/hvmem.cpp" />
+    <ClCompile Include="src/memory/hvmem/platform_windows.cpp" />
+    <ClCompile Include="src/memory/hvmem/selftest.cpp" />
+    <ClCompile Include="src/core/boot_time.cpp" />
+    <ClCompile Include="src/core/svm_init.cpp" />
+    <ClCompile Include="src/core/svm_probe.cpp" />
+    <ClCompile Include="src/core/npt_setup.cpp" />
+    <ClCompile Include="src/core/host_state.cpp" />
+    <ClCompile Include="src/core/dram_extent.cpp" />
+    <ClCompile Include="src/core/host_exception.cpp" />
+    <ClCompile Include="src/core/trace.cpp" />
+    <ClCompile Include="src/core/msr_handler.cpp" />
+    <ClCompile Include="src/core/vmexit_log_capture.cpp" />
+    <ClCompile Include="src/core/x2apic_icr.cpp" />
+    <ClCompile Include="src/core/vmexit_handler.cpp" />
+    <ClCompile Include="src/core/lapic_intercept.cpp" />
+    <ClCompile Include="src/core/ap_wake.cpp" />
+    <ClCompile Include="src/core/hv_terminate.cpp" />
+    <ClCompile Include="src/vmm/vmmcall_handler.cpp" />
+    <ClCompile Include="src/micro_vm/micro_vm.cpp" />
+    <ClCompile Include="src/core/pci_hide.cpp" />
+    <ClCompile Include="src/utils/net/pci.cpp" />
+    <ClCompile Include="src/utils/net/rtl8125.cpp" />
+    <ClCompile Include="src/utils/net/net_log.cpp" />
+    <ClCompile Include="src/utils/fb_panic.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include/spinlock.h" />
+    <ClInclude Include="include/log.h" />
+    <ClInclude Include="include/common.h" />
+    <ClInclude Include="include/boot_time.h" />
+    <ClInclude Include="include/boot_stubs.h" />
+    <ClInclude Include="include/hv_platform.h" />
+    <ClInclude Include="include/hvmem/hvmem.h" />
+    <ClInclude Include="include/hvmem/platform.h" />
+    <ClInclude Include="include/asm/vm_intrin.h" />
+    <ClInclude Include="include/svm/cpuid.h" />
+    <ClInclude Include="include/svm/msr.h" />
+    <ClInclude Include="include/svm/paging.h" />
+    <ClInclude Include="include/svm/vmcb.h" />
+    <ClInclude Include="include/svm/x64.h" />
+    <ClInclude Include="include/svm/lapic.h" />
+    <ClInclude Include="include/svm/mp_services.h" />
+    <ClInclude Include="include/micro_vm.h" />
+    <ClInclude Include="include/vmmcall_handler.h" />
+    <ClInclude Include="include/ap_wake.h" />
+    <ClInclude Include="include/svm_probe.h" />
+    <ClInclude Include="include/npt_setup.h" />
+    <ClInclude Include="include/host_state.h" />
+    <ClInclude Include="include/dram_extent.h" />
+    <ClInclude Include="include/host_exception.h" />
+    <ClInclude Include="include/trace.h" />
+    <ClInclude Include="include/msr_handler.h" />
+    <ClInclude Include="include/vmexit_log_capture.h" />
+    <ClInclude Include="include/x2apic_icr.h" />
+    <ClInclude Include="include\net\pci_hide.h" />
+    <ClInclude Include="include\net\pci.h" />
+    <ClInclude Include="include\net\rtl8125.h" />
+    <ClInclude Include="include\net\net_log.h" />
+    <ClInclude Include="include/fb_panic.h" />
+    <ClInclude Include="include/hv_toggles.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="src/asm/vm_intrin.asm" />
+    <MASM Include="src/asm/vm_launch.asm" />
+    <MASM Include="src/asm/exception_handlers.asm" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  
+  <Target Name="Pe2Mvmf" AfterTargets="Build" Inputs="$(TargetPath)" Outputs="$(OutDir)$(TargetName).bin">
+    <PropertyGroup>
+      <Pe2MvmfScript>$(SolutionDir)tools\pe2mvmf\pe2mvmf.py</Pe2MvmfScript>
+      <Pe2MvmfOut>$(OutDir)$(TargetName).bin</Pe2MvmfOut>
+    </PropertyGroup>
+    <Exec Command="py -3 &quot;$(Pe2MvmfScript)&quot; &quot;$(TargetPath)&quot; &quot;$(Pe2MvmfOut)&quot;" />
+  </Target>
+  
+  <Target Name="CopyDeployScript"
+          AfterTargets="Build"
+          Inputs="$(SolutionDir)scripts\deploy-loader.ps1"
+          Outputs="$(OutDir)deploy-loader.ps1">
+    <Copy SourceFiles="$(SolutionDir)scripts\deploy-loader.ps1"
+          DestinationFolder="$(OutDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
+</Project>

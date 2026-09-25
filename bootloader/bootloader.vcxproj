@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F1E2D3C4-B5A6-4978-9615-1B2C3D4E5F60}</ProjectGuid>
+    <RootNamespace>bootloader</RootNamespace>
+    <ProjectName>bootloader</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <TargetName>loader</TargetName>
+    <TargetExt>.efi</TargetExt>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\obj\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <CompileAs>CompileAsC</CompileAs>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)mvm-hv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <ExceptionHandling>false</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <SDLCheck>false</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>/Gs32768 /Zl %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>EFI Application</SubSystem>
+      <EntryPointSymbol>EfiMain</EntryPointSymbol>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <SetChecksum>true</SetChecksum>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <GenerateManifest>false</GenerateManifest>
+      <EnableUAC>false</EnableUAC>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+      
+      <AdditionalOptions>/BASE:0x140000000 /DYNAMICBASE:NO /FIXED:NO /MANIFEST:NO /NXCOMPAT:NO /IGNORE:4075 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>if exist "$(OutDir)$(TargetName).exe" move /Y "$(OutDir)$(TargetName).exe" "$(OutDir)$(TargetName).efi"</Command>
+      <Message>Renaming loader.exe -&gt; loader.efi (MSBuild forces .exe on Application config)</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <CompileAs>CompileAsC</CompileAs>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MinSpace</Optimization>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)mvm-hv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <ExceptionHandling>false</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>/Gs32768 /Zl %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>EFI Application</SubSystem>
+      <EntryPointSymbol>EfiMain</EntryPointSymbol>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <SetChecksum>true</SetChecksum>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <GenerateManifest>false</GenerateManifest>
+      <EnableUAC>false</EnableUAC>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+      
+      <AdditionalOptions>/BASE:0x140000000 /DYNAMICBASE:NO /FIXED:NO /MANIFEST:NO /NXCOMPAT:NO /IGNORE:4075 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>if exist "$(OutDir)$(TargetName).exe" move /Y "$(OutDir)$(TargetName).exe" "$(OutDir)$(TargetName).efi"</Command>
+      <Message>Renaming loader.exe -&gt; loader.efi (MSBuild forces .exe on Application config)</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\hvb.h" />
+    <ClInclude Include="net\netlog_cfg.h" />
+    <ClInclude Include="net\hv_features_cfg.h" />
+    <ClInclude Include="include\flat_loader.h" />
+    <ClInclude Include="include\loader.h" />
+    <ClInclude Include="include\efi\efi.h" />
+    <ClInclude Include="net\udp_frame.h" />
+    <ClInclude Include="net\snp_send.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\loader.c" />
+    <ClCompile Include="net\netlog_cfg.c" />
+    <ClCompile Include="net\hv_features_cfg.c" />
+    <ClCompile Include="net\udp_frame.c" />
+    <ClCompile Include="net\snp_send.c" />
+    <ClCompile Include="src\loader_rt.c" />
+    <ClCompile Include="src\loader_util.c" />
+    <ClCompile Include="src\loader_file.c" />
+    <ClCompile Include="src\loader_hvb.c" />
+    <ClCompile Include="src\loader_log.c" />
+    <ClCompile Include="src\platform_uefi.cpp">
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    
+    <ClCompile Include="..\mvm-hv\src\memory\hvmem\hvmem.cpp">
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ObjectFileName>$(IntDir)hvmem_core.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\mvm-hv\src\memory\hvmem\selftest.cpp">
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ObjectFileName>$(IntDir)hvmem_selftest.obj</ObjectFileName>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

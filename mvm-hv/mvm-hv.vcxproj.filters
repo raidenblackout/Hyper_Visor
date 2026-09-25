@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{C1F123F3-E1ED-4524-AA1A-321DF8EA5C92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\asm">
+      <UniqueIdentifier>{9B21D9FE-6172-47F1-9A20-76EA6698078C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core">
+      <UniqueIdentifier>{74413ADF-21D3-4C53-9AB8-4F5388A8875D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\handlers">
+      <UniqueIdentifier>{E5213D6B-00A7-489F-BF68-7D6E6BA0891B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\memory">
+      <UniqueIdentifier>{F4A4C914-04B2-4B8E-A9B6-3D0C09D9EE68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{51B367D1-86CE-4D64-916C-0D6C6F78376A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\micro_vm">
+      <UniqueIdentifier>{B1C2D3E4-5F60-4A7B-8C9D-0E1F2A3B4C5D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{7E7C91F0-00D8-45D0-A155-352CC93DC9CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\asm">
+      <UniqueIdentifier>{6EA25CA6-5341-4665-96C5-B4952E692849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\handlers">
+      <UniqueIdentifier>{2D3D1FF3-3565-4158-AE15-0D0D93D8ABCB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\svm">
+      <UniqueIdentifier>{EF41500E-29AA-4BCC-A4D2-CD7477FC257C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\net">
+      <UniqueIdentifier>{4A5B6C7D-8E9F-4A0B-9C1D-2E3F4A5B6C7D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils\net">
+      <UniqueIdentifier>{5B6C7D8E-9F0A-4B1C-AD2E-3F4A5B6C7D8E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src/memory/poolmanager.cpp">
+      <Filter>src\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src/utils/spinlock.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src/utils/log.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src/core/hypervisor_routines.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/memory/npt.cpp">
+      <Filter>src\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src/memory/eprocess.cpp">
+      <Filter>src\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src/memory/process_cache.cpp">
+      <Filter>src\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src/memory/shadow_npt.cpp">
+      <Filter>src\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\memory\npt_profiler.cpp">
+      <Filter>src\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src/handlers/vmexit_handler.cpp">
+      <Filter>src\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="src/handlers/exit_instructions.cpp">
+      <Filter>src\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="src/handlers/exit_faults.cpp">
+      <Filter>src\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="src/handlers/nested_svm.cpp">
+      <Filter>src\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="src/handlers/vmmcall_handler.cpp">
+      <Filter>src\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\micro_vm\micro_vm.cpp">
+      <Filter>src\micro_vm</Filter>
+    </ClCompile>
+    <ClCompile Include="src/core/vmm.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/core/main.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/core/boot_time.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/core/svm_init.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/core/vmexit_handler.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/utils/net/pci.cpp">
+      <Filter>src\utils\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src/utils/net/rtl8125.cpp">
+      <Filter>src\utils\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src/utils/net/net_log.cpp">
+      <Filter>src\utils\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src/utils/fb_panic.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include/poolmanager.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/allocators.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/spinlock.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/log.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\svm\msr.h">
+      <Filter>include\svm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\svm\cpuid.h">
+      <Filter>include\svm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\svm\vmcb.h">
+      <Filter>include\svm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\svm\paging.h">
+      <Filter>include\svm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\svm\x64.h">
+      <Filter>include\svm</Filter>
+    </ClInclude>
+    <ClInclude Include="include/common.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\asm\vm_intrin.h">
+      <Filter>include\asm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\asm\vm_context.h">
+      <Filter>include\asm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\asm\x86_decoder.h">
+      <Filter>include\asm</Filter>
+    </ClInclude>
+    <ClInclude Include="include/hypervisor_routines.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/npt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/eprocess.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/process_cache.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/shadow_npt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\npt_profiler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/vmexit_handler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/handlers/exit_handlers.h">
+      <Filter>include\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="include/vmmcall_handler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/micro_vm.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/vmm.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/mvm_shared.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\pci.h">
+      <Filter>include\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\rtl8125.h">
+      <Filter>include\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\net_log.h">
+      <Filter>include\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include/fb_panic.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/hv_toggles.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="src\asm\vm_intrin.asm">
+      <Filter>src\asm</Filter>
+    </MASM>
+    <MASM Include="src\asm\vm_launch.asm">
+      <Filter>src\asm</Filter>
+    </MASM>
+    <MASM Include="src\asm\exception_handlers.asm">
+      <Filter>src\asm</Filter>
+    </MASM>
+  </ItemGroup>
+</Project>
